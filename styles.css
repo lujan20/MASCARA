@@ -1,0 +1,240 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #4CAF50;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Estilos para la galería de imágenes de productos */
+.product-image-gallery {
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.thumbnail-images img {
+    width: 60px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.thumbnail-images img:hover {
+    border: 2px solid #4CAF50; /* Efecto al pasar el cursor por la miniatura */
+}
+
+/* Estilos de productos */
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-link {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Estilos para la página de detalles de producto */
+.product-detail-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.product-info {
+    flex: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 300px;
+}
+
+#order-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#order-form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+/* Estilo llamativo para el botón "Hacer el pedido" */
+.buy-button {
+    background-color: #FF9900;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto hover (al pasar el mouse por encima) */
+.buy-button:hover {
+    background-color: #FF6600;
+    transform: scale(1.1);
+}
+
+/* Animación de balanceo tipo campana */
+@keyframes swing {
+    15% {
+        transform: rotate(15deg);
+    }
+    30% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    65% {
+        transform: rotate(-5deg);
+    }
+    80% {
+        transform: rotate(3deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Agregar la animación de balanceo al botón */
+.buy-button.swing {
+    animation: swing 1.5s ease infinite;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .product-detail-page {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .product-image-gallery {
+        margin-bottom: 20px;
+    }
+
+    .thumbnail-images img {
+        width: 50px;
+    }
+
+    .product-info {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .product-info h2 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .product-description {
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .quantity-controls {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .buy-button {
+        width: 100%;
+        font-size: 1.2em;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thumbnail-images img {
+        width: 40px;
+    }
+
+    .product-info h2 {
+        font-size: 1.2em;
+    }
+
+    .quantity-controls input {
+        width: 50px;
+    }
+
+    .buy-button {
+        font-size: 1em;
+    }
+}
