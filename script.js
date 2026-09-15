@@ -1,22 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // =========================
-    // GALERÍA DE IMÁGENES
-    // =========================
 
-    const mainImage = document.querySelector('.main-image img');
-    const thumbnails = document.querySelectorAll('.thumbnail-images img');
+    // =========================================
+    // GALERÍA DE IMÁGENES
+    // =========================================
+
+    const mainImage =
+        document.querySelector('.main-image img');
+
+    const thumbnails =
+        document.querySelectorAll('.thumbnail-images img');
 
     let index = 0;
 
-    // Cambiar imagen al hacer clic en una miniatura
+
+    // =========================================
+    // CAMBIAR IMAGEN AL HACER CLIC
+    // =========================================
+
     thumbnails.forEach((thumbnail, idx) => {
 
         thumbnail.addEventListener('click', function () {
 
-            mainImage.src = thumbnail.src;
+            if (mainImage) {
 
-            // Guardar la posición actual
+                mainImage.src = thumbnail.src;
+
+            }
+
+            // Guardar posición actual
             index = idx;
 
         });
@@ -24,126 +36,253 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // Carrusel automático
+    // =========================================
+    // CARRUSEL AUTOMÁTICO
+    // =========================================
+
     function autoChangeImage() {
 
-        if (thumbnails.length === 0) {
+        // Si no existen imágenes, no hacer nada
+        if (!mainImage || thumbnails.length === 0) {
             return;
         }
 
+
+        // Pasar a la siguiente imagen
         index++;
 
+
+        // Volver a la primera cuando llegue al final
         if (index >= thumbnails.length) {
+
             index = 0;
+
         }
 
-        mainImage.src = thumbnails[index].src;
+
+        // Cambiar imagen principal
+        mainImage.src =
+            thumbnails[index].src;
 
     }
+
 
     // Cambiar imagen cada 3 segundos
-    setInterval(autoChangeImage, 3000);
+    if (thumbnails.length > 0) {
+
+        setInterval(
+            autoChangeImage,
+            3000
+        );
+
+    }
 
 
-    // =========================
+
+    // =========================================
     // CONTROL DE CANTIDAD
-    // =========================
+    // =========================================
 
-    const decreaseButton = document.querySelector('.decrease');
-    const increaseButton = document.querySelector('.increase');
-    const quantityInput = document.getElementById('quantity');
+    const decreaseButton =
+        document.querySelector('.decrease');
+
+    const increaseButton =
+        document.querySelector('.increase');
+
+    const quantityInput =
+        document.getElementById('quantity');
 
 
-    // Botón -
+    // =========================================
+    // BOTÓN -
+    // =========================================
+
     if (decreaseButton && quantityInput) {
 
-        decreaseButton.addEventListener('click', function () {
+        decreaseButton.addEventListener(
+            'click',
+            function () {
 
-            let quantity = parseInt(quantityInput.value) || 1;
+                let quantity =
+                    parseInt(quantityInput.value) || 1;
 
-            if (quantity > 1) {
-                quantity--;
+
+                // No permitir menos de 1
+                if (quantity > 1) {
+
+                    quantity--;
+
+                }
+
+
+                quantityInput.value =
+                    quantity;
+
             }
-
-            quantityInput.value = quantity;
-
-        });
+        );
 
     }
 
 
-    // Botón +
+
+    // =========================================
+    // BOTÓN +
+    // =========================================
+
     if (increaseButton && quantityInput) {
 
-        increaseButton.addEventListener('click', function () {
+        increaseButton.addEventListener(
+            'click',
+            function () {
 
-            let quantity = parseInt(quantityInput.value) || 1;
+                let quantity =
+                    parseInt(quantityInput.value) || 1;
 
-            quantity++;
 
-            quantityInput.value = quantity;
+                quantity++;
 
-        });
+
+                quantityInput.value =
+                    quantity;
+
+            }
+        );
 
     }
 
 
-    // =========================
-    // PEDIDO POR WHATSAPP
-    // =========================
 
-    const orderForm = document.getElementById('order-form');
+    // =========================================
+    // FORMULARIO DE PEDIDO
+    // =========================================
+
+    const orderForm =
+        document.getElementById('order-form');
 
 
     if (orderForm && quantityInput) {
 
-        orderForm.addEventListener('submit', function (event) {
+        orderForm.addEventListener(
+            'submit',
+            function (event) {
 
-            event.preventDefault();
-
-
-            // Cantidad
-            const quantity =
-                parseInt(quantityInput.value) || 1;
+                // Evitar que la página se recargue
+                event.preventDefault();
 
 
-            // Producto
-            const productName =
-                'Audífonos Inalámbricos i12 TWS Bluetooth 5.0';
+
+                // =====================================
+                // CANTIDAD
+                // =====================================
+
+                let quantity =
+                    parseInt(quantityInput.value) || 1;
 
 
-            // Precio
-            const price = 30.00;
+                // No permitir cantidades menores que 1
+                if (quantity < 1) {
+
+                    quantity = 1;
+
+                    quantityInput.value = 1;
+
+                }
 
 
-            // Total
-            const total = price * quantity;
+
+                // =====================================
+                // PRODUCTO
+                // =====================================
+
+                const productName =
+                    orderForm.dataset.product;
 
 
-            // Número de WhatsApp
-            const whatsappNumber =
-                '51979579903';
+
+                // =====================================
+                // PRECIO
+                // =====================================
+
+                const price =
+                    parseFloat(
+                        orderForm.dataset.price
+                    );
 
 
-            // Mensaje
-            const message =
-                `Hola, quiero hacer un pedido.%0A%0A` +
-                `🛒 Producto: ${productName}%0A` +
-                `📦 Cantidad: ${quantity}%0A` +
-                `💰 Precio unitario: S/. ${price.toFixed(2)}%0A` +
-                `💵 Total: S/. ${total.toFixed(2)}%0A%0A` +
-                `¿Podrían confirmar mi pedido?`;
+
+                // =====================================
+                // COMPROBAR DATOS
+                // =====================================
+
+                if (!productName || isNaN(price)) {
+
+                    alert(
+                        'Error: falta el nombre o precio del producto.'
+                    );
+
+                    return;
+
+                }
 
 
-            // URL de WhatsApp
-            const whatsappUrl =
-                `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+
+                // =====================================
+                // CALCULAR TOTAL
+                // =====================================
+
+                const total =
+                    price * quantity;
 
 
-            // Abrir WhatsApp
-            window.open(whatsappUrl, '_blank');
 
-        });
+                // =====================================
+                // NÚMERO DE WHATSAPP
+                // =====================================
+
+                const whatsappNumber =
+                    '51979579903';
+
+
+
+                // =====================================
+                // MENSAJE DE WHATSAPP
+                // =====================================
+
+                const message =
+                    `Hola, quiero hacer un pedido.%0A%0A` +
+
+                    `🛒 Producto: ${productName}%0A` +
+
+                    `📦 Cantidad: ${quantity}%0A` +
+
+                    `💰 Precio unitario: S/. ${price.toFixed(2)}%0A` +
+
+                    `💵 Total: S/. ${total.toFixed(2)}%0A%0A` +
+
+                    `¿Podrían confirmar mi pedido?`;
+
+
+
+                // =====================================
+                // CREAR URL DE WHATSAPP
+                // =====================================
+
+                const whatsappUrl =
+                    `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+
+
+
+                // =====================================
+                // ABRIR WHATSAPP
+                // =====================================
+
+                window.open(
+                    whatsappUrl,
+                    '_blank'
+                );
+
+            }
+        );
 
     }
 
