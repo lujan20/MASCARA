@@ -4,107 +4,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producto - Tienda Virtual</title>
+
+    <title>Máscara de Purga Iluminada - Tienda Virtual</title>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
     <header>
         <h1>Detalle del Producto</h1>
     </header>
 
-    <main>
-        <div class="product-detail-page">
-            <!-- Galería de Imágenes del Producto -->
-            <div class="product-image-gallery">
-                <div class="main-image">
-                    <img src="img/tree.png" alt="Máscara Halloween">
-                </div>
-                <div class="thumbnail-images">
-                    <img src="img/eagt.png" alt="Máscara 1" onclick="changeImage(this)">
-                    <img src="img/five.png" alt="Máscara 2" onclick="changeImage(this)">
-                    <img src="img/ford.png" alt="Máscara 3" onclick="changeImage(this)">
-                    <img src="img/one.png" alt="Máscara 4" onclick="changeImage(this)">
-                </div>
-            </div>
-            
-            
 
-            <!-- Información del Producto -->
+    <main>
+
+        <!-- =========================
+             PRODUCTO
+        ========================== -->
+
+        <div class="product-detail-page">
+
+
+            <!-- =========================
+                 GALERÍA DE IMÁGENES
+            ========================== -->
+
+            <div class="product-image-gallery">
+
+                <div class="main-image">
+                    <img
+                        src="img/tree.png"
+                        alt="Máscara de Purga Iluminada para Halloween">
+                </div>
+
+
+                <div class="thumbnail-images">
+
+                    <img
+                        src="img/eagt.png"
+                        alt="Máscara de Purga - imagen 1">
+
+                    <img
+                        src="img/five.png"
+                        alt="Máscara de Purga - imagen 2">
+
+                    <img
+                        src="img/ford.png"
+                        alt="Máscara de Purga - imagen 3">
+
+                    <img
+                        src="img/one.png"
+                        alt="Máscara de Purga - imagen 4">
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 INFORMACIÓN DEL PRODUCTO
+            ========================== -->
+
             <div class="product-info">
-                <h2>Máscara de Purga Iluminada para Halloween</h2>
-                <p style="color: rgb(230, 10, 10); font-weight:900;"> 20 vendidos en las últimas 24 hours </p>
-                <br>
-                <button class="buy-button swing"><h2>ENVIO ES GRATIS </h2> </button>
-                
-                <h1 style="color: rgb(21, 150, 224); font-weight:900;" class="new-price">S/. 30.00</h1>
-                <p  class="old-price">S/. 60.00</p>
-                <p style="color: rgb(230, 10, 10); font-weight:700;" class="save">Ahorras: S/. 30.00 (50%)</p>
+
+                <h2>
+                    Máscara de Purga Iluminada para Halloween
+                </h2>
+
+
+                <p class="sold-count">
+                    🔥 20 vendidos en las últimas 24 horas
+                </p>
+
+
+                <!-- Envío gratis -->
+
+                <div class="free-shipping">
+                    🚚 ENVÍO GRATIS
+                </div>
+
+
+                <!-- =========================
+                     PRECIO
+                ========================== -->
+
+                <div class="price-section">
+
+                    <p class="old-price">
+                        S/. 60.00
+                    </p>
+
+                    <h1 class="new-price">
+                        S/. 30.00
+                    </h1>
+
+                    <p class="save">
+                        Ahorras: S/. 30.00 (50%)
+                    </p>
+
+                </div>
+
+
+                <!-- Descripción corta -->
 
                 <p class="product-description">
-                    ¡Lleva tu disfraz de Halloween al siguiente nivel con esta increíble máscara iluminada!
-
+                    ¡Lleva tu disfraz de Halloween al siguiente nivel
+                    con esta increíble máscara iluminada!
                 </p>
-             
-                <form id="order-form">
-                    <label for="quantity">Cantidad:</label>
-                    <div class="quantity-controls">
-                        <button type="button" class="decrease">-</button>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        <button type="button" class="increase">+</button>
+
+
+                <!-- =========================
+                     FORMULARIO DE PEDIDO
+                ========================== -->
+
+                <form
+                    id="order-form"
+                    data-product="Máscara de Purga Iluminada para Halloween"
+                    data-price="30">
+
+
+                    <!-- Cantidad -->
+
+                    <div class="quantity-section">
+
+                        <label for="quantity">
+                            Cantidad:
+                        </label>
+
+                        <div class="quantity-controls">
+
+                            <button
+                                type="button"
+                                class="decrease">
+                                −
+                            </button>
+
+                            <input
+                                type="number"
+                                id="quantity"
+                                name="quantity"
+                                value="1"
+                                min="1">
+
+                            <button
+                                type="button"
+                                class="increase">
+                                +
+                            </button>
+
+                        </div>
+
                     </div>
-                    <button type="submit" class="buy-button swing"><h2>Hacer el pedido </h2> </button>
+
+
+                    <!-- Botón de pedido -->
+
+                    <button
+                        type="submit"
+                        class="buy-button swing">
+                        Hacer el pedido
+                    </button>
+
                 </form>
+
+
                 <br>
-                 <p class="product-description">
-                    ¡tambien se vende por mayor es un precio mas comodo! 
+
+
+                <p class="product-description">
+                    📦 También vendemos por mayor.
+                    ¡Consulta por nuestros precios especiales!
                 </p>
+
             </div>
+
         </div>
-        <div class="product-info ">
-            <h2>Descripcion</h2>
 
-            <p>
-                Mascara LED con diseño único y personalizado te permitirá resaltar en las fiestas, Para los niños y
-                jóvenes que quieren divertirse en la noche de Halloween!
-            </p>
-        <p>
-            <ol>
-                </ul>
-                💀Material super resistente PVC
-                </ul>
-            </ol>
-            <ol>
-                </ul>
-                💀Multicolores
-                </ul>
-            </ol>
-            <ol>
-                </ul>
-                💀Tamaño estándar
-                </ul>
-            </ol>
-            <ol>
-                </ul>
-                💀3 modos de funcionamientos
-                </ul>
-            </ol>
-            <p>
-                📣 CONTAMOS CON STOCK LIMITADO. RESERVA TU PEDIDO
-            </p>
-        </p>
 
+        <!-- =========================
+             DESCRIPCIÓN
+        ========================== -->
+
+        <div class="product-info">
+
+            <h2>
+                Descripción
+            </h2>
+
+
+            <p class="product-description">
+                Máscara LED con diseño único y personalizado que
+                te permitirá resaltar en las fiestas de Halloween.
+                Ideal para niños, jóvenes y adultos que quieran
+                divertirse durante la noche de Halloween.
+            </p>
+
+
+            <br>
+
+
+            <!-- =========================
+                 CARACTERÍSTICAS
+            ========================== -->
+
+            <h2>
+                Características
+            </h2>
+
+
+            <ul class="product-features">
+
+                <li>
+                    💀 Material resistente de PVC
+                </li>
+
+                <li>
+                    💀 Luces multicolores
+                </li>
+
+                <li>
+                    💀 Tamaño estándar
+                </li>
+
+                <li>
+                    💀 3 modos de funcionamiento
+                </li>
+
+            </ul>
+
+
+            <br>
+
+
+            <p class="stock-warning">
+                📣 CONTAMOS CON STOCK LIMITADO.
+                ¡RESERVA TU PEDIDO!
+            </p>
 
         </div>
 
     </main>
-    
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================== -->
 
     <footer>
-        <p>© 2024 Tienda Virtual. Todos los derechos reservados.</p>
+
+        <p>
+            © 2026 Tienda Virtual.
+            Todos los derechos reservados.
+        </p>
+
     </footer>
 
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
